@@ -4,6 +4,8 @@ import models
 from database import engine, SessionLocal
 from sqlalchemy.orm import Session
 import uvicorn
+from typing import Optional
+
 
 app = FastAPI()
 
@@ -20,9 +22,10 @@ class User(BaseModel):
     user_name: str = Field(min_length=1)
     user_id: int
     user_email: str = Field(min_length=1, max_length=5000)
-    age: int
+    age: Optional[int] = None
     recommendations: str = Field(default_factory=list)
-    ZIP: str = Field(min_length=1, max_length=5000)
+    ZIP: Optional[str] = None
+
 
 USERS = []
 
